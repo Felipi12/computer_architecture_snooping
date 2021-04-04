@@ -1,3 +1,5 @@
+//RM - Read Miss  |  RH - Read Hit  |  WM - Write Miss  |  WH - Write Hit
+
 module parte1maq1(
   input [0:0] KEY,
   input [1:0] SW,
