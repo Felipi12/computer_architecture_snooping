@@ -1,93 +1,82 @@
-//RM - Read Miss  |  RH - Read Hit  |  WM - Write Miss  |  WH - Write Hit
+module parte1maq1( clock, SW);
+  input clock;
+  input [1:0] SW;
 
-module parte1maq1(
-  input [0:0] KEY,
-  input [1:0] SW,
-);
+  //Possíveis Operações
+  localparam ReadMiss = 2'b00, ReadHit = 2'b01, WriteMiss = 2'b10, WriteHit = 2'b11;
 
-  // Processor States
-  localparam Invalid = 2'b00;
-  localparam Exclusive = 2'b01;
-  localparam Shared = 2'b10;
+  //Estados do Processador
+  localparam Invalid = 2'b00, Exclusive = 2'b01, Shared = 2'b10;
 
-  // Processor Messages
-  localparam Place_Read_Miss_On_Bus = 3'b001;
-  localparam Place_Invalidate_On_Bus = 3'b010;
-  localparam Place_Write_Miss_On_Bus = 3'b011;
+  //Mensagens do Processador
+  localparam Place_Read_Miss_On_Bus = 3'b001, Place_Invalidate_On_Bus = 3'b010, Place_Write_Miss_On_Bus = 3'b011;
 
-  localparam Write_Back_Block = 3'b100;
-  localparam Write_Back_Cache_Block = 3'b101;
+  localparam Write_Back_Block = 3'b100, Write_Back_Cache_Block = 3'b101;
 
   localparam Empty = 3'b000;
 
-  // Operations
-  localparam RM = 2'b00;
-  localparam RH = 2'b01;
-  localparam WM = 2'b10;
-  localparam WH = 2'b11;
-
-  reg [1:0] state;
-  reg [2:0] msg;
+  reg [1:0] estado;
+  reg [2:0] mensagem;
 
   initial
-    state <= 1;
+    estado <= 1;
 
-  always @(posedge KEY[0])
-    case(state)
+  always @(posedge clock)
+    case(estado)
       Invalid:
         case(SW)
-          RM, RH:
+          ReadMiss, ReadHit:
             begin
-              state <= Shared;
-              msg <= Place_Read_Miss_On_Bus;
+              estado <= Shared;
+              mensagem <= Place_Read_Miss_On_Bus;
             end
-          WM, WH:
+          WriteMiss, WriteHit:
             begin
-              state <= Exclusive;
-              msg <= Place_Write_Miss_On_Bus;
+              estado <= Exclusive;
+              mensagem <= Place_Write_Miss_On_Bus;
             end
         endcase
 
       Exclusive:
         case(SW)
-          WH, RH:
+          WriteHit, ReadHit:
             begin
-              state <= Exclusive;
-              msg <= Empty;
+              estado <= Exclusive;
+              mensagem <= Empty;
             end
-          WM:
+          WriteMiss:
             begin
-              state <= Exclusive;
-              msg <= Write_Back_Cache_Block;
+              estado <= Exclusive;
+              mensagem <= Write_Back_Cache_Block;
             end
-          RM:
+          ReadMiss:
             begin
-              state <= Shared;
-              msg <= Write_Back_Block;
+              estado <= Shared;
+              mensagem <= Write_Back_Block;
             end
         endcase
 
       Shared:
         case(SW)
-          RH:
+          ReadHit:
             begin
-              state <= Shared;
-              msg <= Empty;
+              estado <= Shared;
+              mensagem <= Empty;
             end
-          RM:
+          ReadMiss:
             begin
-              state <= Shared;
-              msg <= Place_Read_Miss_On_Bus;
+              estado <= Shared;
+              mensagem <= Place_Read_Miss_On_Bus;
             end
-          WH:
+          WriteHit:
             begin
-              state <= Exclusive;
-              msg <= Place_Invalidate_On_Bus;
+              estado <= Exclusive;
+              mensagem <= Place_Invalidate_On_Bus;
             end
-          WM:
+          WriteMiss:
             begin
-              state <= Exclusive;
-              msg <= Place_Write_Miss_On_Bus;
+              estado <= Exclusive;
+              mensagem <= Place_Write_Miss_On_Bus;
             end
         endcase
     endcase

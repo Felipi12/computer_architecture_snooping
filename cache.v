@@ -1,6 +1,6 @@
 module cache #(
   parameter NAME, FILE,
-  parameter RM, RH, WB
+  parameter ReadMiss, ReadHit, WriteBack
 ) (
   input [1:0] step,
   input [8:0] instruction,
@@ -36,7 +36,7 @@ module cache #(
     $readmemb(FILE, mem);
 
   always @(step) begin
-    bus_out = {RH, 2'b0, 4'b0};
+    bus_out = {ReadHit, 2'b0, 4'b0};
     case(step)
       2'b00:
         if(iThis) begin
@@ -44,7 +44,7 @@ module cache #(
           if(aTag != iTag || aState == INVALID) begin
             // MODIFIED STATE
             if(aState == MODIFIED) begin
-              bus_out = {WB, aTag, aValue};
+              bus_out = {WriteBack, aTag, aValue};
             end
           end
         end
@@ -60,9 +60,9 @@ module cache #(
           end else begin
             // MISS
             if(aTag != iTag || aState == INVALID)
-              bus_out = {RM, iTag, 4'b0};
+              bus_out = {ReadMiss, iTag, 4'b0};
             else
-              bus_out = {RH, iTag, 4'b0};
+              bus_out = {ReadHit, iTag, 4'b0};
           end
         end
 
@@ -74,7 +74,7 @@ module cache #(
             // HIT
             if(aTag == iTag) begin
               if(aState == MODIFIED)
-                bus_out = {WB, aTag, aValue};
+                bus_out = {WriteBack, aTag, aValue};
 
               mem[iIndex][7:6] = INVALID;
             end
@@ -83,9 +83,9 @@ module cache #(
           end else begin
 
             // MISS
-            if(bType == RM) // informacao pode estar desatualizada
+            if(bType == ReadMiss) // informacao pode estar desatualizada
               if(aTag == iTag && aState != INVALID) begin
-                bus_out = {WB, aTag, aValue};
+                bus_out = {WriteBack, aTag, aValue};
                 mem[iIndex][7:6] = SHARED;
               end
           end

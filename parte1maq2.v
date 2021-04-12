@@ -1,67 +1,60 @@
-//RM - Read Miss  |  RH - Read Hit  |  WM - Write Miss  |  WH - Write Hit
+module parte1maq2 ( clock, SW );
+  input clock;
+  input [1:0] SW;
 
-module parte1maq2 (
-  input [0:0] KEY,
-  input [1:0] SW,
-);
+  //Possíveis operações
+  localparam ReadMiss = 2'b00, Invalidate = 2'b01, WriteMiss = 2'b10;
+  
+  // Estados do Processador
+  localparam Invalid = 2'b00, Exclusive = 2'b01, Shared = 2'b10;
 
-  // Processor States
-  localparam Invalid = 2'b00;
-  localparam Exclusive = 2'b01;
-  localparam Shared = 2'b10;
+  // Mensagens do Processador
+  localparam Empty = 1'b0, Write_Back_Block = 1'b1;
 
-  // Processor Messages
-  localparam Empty = 1'b0;
-  localparam Write_Back_Block = 1'b1;
-
-  // Operations
-  localparam RM = 2'b00;
-  localparam Invalidate = 2'b01;
-  localparam WM = 2'b10;
-
-  reg [1:0] state;
+ 
+  reg [1:0] estado;
   reg msg;
 
   initial
-    state <= 2;
+    estado <= 2;
 
-  always @(posedge KEY[0])
-    case(state)
+  always @(posedge clock)
+    case(estado)
       Invalid:
         begin
-          state <= Invalid;
+          estado <= Invalid;
           msg <= Empty;
         end
 
       Exclusive:
         case(SW)
-          WM:
+          WriteMiss:
             begin
-              state <= Invalid;
+              estado <= Invalid;
               msg <= Write_Back_Block;
             end
-          RM:
+          ReadMiss:
             begin
-              state <= Shared;
+              estado <= Shared;
               msg <= Write_Back_Block;
             end
           default:
             begin
-              state <= Exclusive;
+              estado <= Exclusive;
               msg <= Empty;
             end
         endcase
 
       Shared:
         case(SW)
-          WM, Invalidate:
+          WriteMiss, Invalidate:
             begin
-              state <= Invalid;
+              estado <= Invalid;
               msg <= Empty;
             end
           default:
             begin
-              state <= Shared;
+              estado <= Shared;
               msg <= Empty;
             end
         endcase
