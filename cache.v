@@ -2,16 +2,16 @@ module cache #(
   parameter NAME, FILE,
   parameter ReadMiss, ReadHit, WriteBack
 ) (
-  input [1:0] step,
+  input [1:0] passo,
   input [8:0] instruction,
-  input [7:0] bus_in,
-  output reg [7:0] bus_out,
+  input [7:0] InBus,
+  output reg [7:0] OutBus,
   output reg [7:0] q
 );
 
-  localparam [1:0] INVALID = 0, SHARED = 1, MODIFIED = 2;
+  localparam [1:0] Invalid = 0, Shared = 1, Modified = 2;
 
-  reg [7:0] mem [0:1];  // 2 x 8
+  reg [7:0] memory [0:1];  // 2 x 8
 
   wire iOp, iThis, iIndex;
   wire [1:0] iTag, aTag, aState, bType, bTag;
@@ -24,27 +24,27 @@ module cache #(
 
   assign iIndex = iTag[0];
 
-  assign aState = mem[iIndex][7:6];
-  assign aTag = mem[iIndex][5:4];
-  assign aValue = mem[iIndex][3:0];
+  assign aState = memory[iIndex][7:6];
+  assign aTag = memory[iIndex][5:4];
+  assign aValue = memory[iIndex][3:0];
 
-  assign bType = bus_in[7:6];
-  assign bTag = bus_in[5:4];
-  assign bValue = bus_in[3:0];
+  assign bType = InBus[7:6];
+  assign bTag = InBus[5:4];
+  assign bValue = InBus[3:0];
 
   initial
-    $readmemb(FILE, mem);
+    $readmemb(FILE, memory);
 
-  always @(step) begin
-    bus_out = {ReadHit, 2'b0, 4'b0};
-    case(step)
+  always @(passo) begin
+    OutBus = {ReadHit, 2'b0, 4'b0};
+    case(passo)
       2'b00:
         if(iThis) begin
           // MISS
-          if(aTag != iTag || aState == INVALID) begin
-            // MODIFIED STATE
-            if(aState == MODIFIED) begin
-              bus_out = {WriteBack, aTag, aValue};
+          if(aTag != iTag || aState == Invalid) begin
+            // Modified STATE
+            if(aState == Modified) begin
+              OutBus = {WriteBack, aTag, aValue};
             end
           end
         end
@@ -53,16 +53,16 @@ module cache #(
         if(iThis) begin
           // WRITE
           if(iOp) begin
-            mem[iIndex] = {MODIFIED, iTag, iValue};
-            bus_out = {INVALID, iTag, 4'b0};
+            memory[iIndex] = {Modified, iTag, iValue};
+            OutBus = {Invalid, iTag, 4'b0};
 
           // READ
           end else begin
             // MISS
-            if(aTag != iTag || aState == INVALID)
-              bus_out = {ReadMiss, iTag, 4'b0};
+            if(aTag != iTag || aState == Invalid)
+              OutBus = {ReadMiss, iTag, 4'b0};
             else
-              bus_out = {ReadHit, iTag, 4'b0};
+              OutBus = {ReadHit, iTag, 4'b0};
           end
         end
 
@@ -73,10 +73,10 @@ module cache #(
 
             // HIT
             if(aTag == iTag) begin
-              if(aState == MODIFIED)
-                bus_out = {WriteBack, aTag, aValue};
+              if(aState == Modified)
+                OutBus = {WriteBack, aTag, aValue};
 
-              mem[iIndex][7:6] = INVALID;
+              memory[iIndex][7:6] = Invalid;
             end
 
           // READ
@@ -84,9 +84,9 @@ module cache #(
 
             // MISS
             if(bType == ReadMiss) // informacao pode estar desatualizada
-              if(aTag == iTag && aState != INVALID) begin
-                bus_out = {WriteBack, aTag, aValue};
-                mem[iIndex][7:6] = SHARED;
+              if(aTag == iTag && aState != Invalid) begin
+                OutBus = {WriteBack, aTag, aValue};
+                memory[iIndex][7:6] = Shared;
               end
           end
         end
@@ -97,10 +97,10 @@ module cache #(
           if(!iOp) begin
 
             // MISS
-            if(aTag != iTag || aState == INVALID) begin
-              mem[iIndex] = {SHARED, bTag, bValue};
+            if(aTag != iTag || aState == Invalid) begin
+              memory[iIndex] = {Shared, bTag, bValue};
             end
-            q = mem[iIndex];
+            q = memory[iIndex];
           end
         end else
        end

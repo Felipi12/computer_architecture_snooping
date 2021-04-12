@@ -1,64 +1,64 @@
-module parte2(KEY, SW, LEDR);
+module parte2(clock, SW);
 
-  input [0:0] KEY;
+  input clock
   input [17:9] SW;
-  output [17:9] LEDR;
 
-  // intruction => op [1] | proc [2] | tag [2] | value [4] = 9 bits
+  // Cada instrução é dividida da seguinte maneira => op [1] | proc [2] | tag [2] | value [4] = 9 bits
 
-  localparam [1:0] PC_0 = 0, PC_1 = 1;
+  localparam [1:0] PC0 = 0, PC1 = 1;
   localparam ReadMiss = 1, ReadHit = 2, WriteBack = 3;
 
-  wire [1:0] step;
-  wire [7:0] cache_0_out, cache_1_out, mem_out, bus_out;
+  wire [1:0] passo;
+  wire [7:0] OutCache1, OutCache2, OutMemory, OutBus;
   wire [7:0] q0, q1;
 
   counter cnt (
-    .clock(KEY[0]),
-    .q(step)
+    .clock(clock),
+    .q(passo)
   );
 
   cache #(
-    .NAME(PC_0), .FILE("C:/altera/LAOCII/Pratica_04/parte_2/cache_0.mem"),
+    // COMPLETAR AQUI
+    .NAME(PC0), .FILE("C:/altera/LAOCII/Pratica_04/parte_2/cache"),
     .ReadMiss(ReadMiss), .ReadHit(ReadHit), .WriteBack(WriteBack)
-    ) Cache0 (
-    .step(step),
+    ) cache1 (
+    .passo(passo),
     .instruction(SW),
-    .bus_in(bus_out),
-    .bus_out(cache_0_out),
+    .InBus(OutBus),
+    .OutBus(OutCache1),
     .q(q0)
   );
 
   cache #(
-    .NAME(PC_1), .FILE("C:/altera/LAOCII/Pratica_04/parte_2/cache_1.mem"),
+    // COMPLETAR AQUI
+    .NAME(PC1), .FILE("C:/altera/LAOCII/Pratica_04/parte_2/cache"),
     .ReadMiss(ReadMiss), .ReadHit(ReadHit), .WriteBack(WriteBack)
-    ) Cache1 (
-    .step(step),
+    ) cache2 (
+    .passo(passo),
     .instruction(SW),
-    .bus_in(bus_out),
-    .bus_out(cache_1_out),
+    .InBus(OutBus),
+    .OutBus(OutCache2),
     .q(q1)
   );
 
 
   memory #(
-    .FILE("C:/altera/LAOCII/Pratica_04/parte_2/mem.mem"),
+    // COMPLETAR AQUI
+    .FILE("C:/altera/LAOCII/Pratica_04/parte_2/cache"),
     .ReadMiss(ReadMiss),
     .WriteBack(WriteBack)
   ) MEM (
-    .bus(bus_out),
-    .q(mem_out)
+    .bus(OutBus),
+    .q(OutMemory)
   );
 
   bus #(
     .ReadHit(ReadHit)
   ) BUS (
-    .PC_0(cache_0_out),
-    .PC_1(cache_1_out),
-    .MEM(mem_out),
-    .q(bus_out)
+    .PC0(OutCache1),
+    .PC1(OutCache2),
+    .MEM(OutMemory),
+    .q(OutBus)
   );
-
-  assign LEDR = SW;
 
 endmodule
