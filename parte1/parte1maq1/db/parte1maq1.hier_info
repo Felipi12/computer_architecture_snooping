@@ -1,0 +1,6 @@
+|parte1maq1
+clock => estado~1.DATAIN
+SW[0] => Decoder0.IN1
+SW[1] => Decoder0.IN0
+
+

@@ -1,0 +1,6 @@
+
+State Machine - |parte1maq1|estado
+Name estado.00 estado.Shared estado.Exclusive 
+estado.00 0 0 0 
+estado.Exclusive 1 0 1 
+estado.Shared 1 1 0 
