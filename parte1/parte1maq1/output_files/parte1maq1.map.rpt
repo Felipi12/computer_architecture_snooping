@@ -1,5 +1,5 @@
 Analysis & Synthesis report for parte1maq1
-Tue Apr 13 09:07:16 2021
+Tue Apr 13 11:41:53 2021
 Quartus Prime Version 19.1.0 Build 670 09/22/2019 SJ Lite Edition
 
 
@@ -46,7 +46,7 @@ https://fpgasoftware.intel.com/eula.
 +----------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                     ;
 +------------------------------------+---------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Tue Apr 13 09:07:16 2021       ;
+; Analysis & Synthesis Status        ; Successful - Tue Apr 13 11:41:53 2021       ;
 ; Quartus Prime Version              ; 19.1.0 Build 670 09/22/2019 SJ Lite Edition ;
 ; Revision Name                      ; parte1maq1                                  ;
 ; Top-level Entity Name              ; parte1maq1                                  ;
@@ -164,13 +164,13 @@ https://fpgasoftware.intel.com/eula.
 +----------------------------+-------------+
 
 
-+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Source Files Read                                                                                                                                        ;
-+----------------------------------+-----------------+------------------------------+---------------------------------------------------------------------------------+---------+
-; File Name with User-Entered Path ; Used in Netlist ; File Type                    ; File Name with Absolute Path                                                    ; Library ;
-+----------------------------------+-----------------+------------------------------+---------------------------------------------------------------------------------+---------+
-; parte1maq1.v                     ; yes             ; Auto-Found Verilog HDL File  ; C:/Users/felip/Downloads/Telegram Desktop/parte1/parte1/parte1maq1/parte1maq1.v ;         ;
-+----------------------------------+-----------------+------------------------------+---------------------------------------------------------------------------------+---------+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                                                                          ;
++----------------------------------+-----------------+------------------------+-------------------------------------------------------------------------------------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type              ; File Name with Absolute Path                                                                                            ; Library ;
++----------------------------------+-----------------+------------------------+-------------------------------------------------------------------------------------------------------------------------+---------+
+; parte1maq1.v                     ; yes             ; User Verilog HDL File  ; C:/Users/felip/Desktop/CEFET/Materias/AOC2/LAOC2/pratica4/computer_architecture_snooping/parte1/parte1maq1/parte1maq1.v ;         ;
++----------------------------------+-----------------+------------------------+-------------------------------------------------------------------------------------------------------------------------+---------+
 
 
 +-----------------------------------------------------+
@@ -289,29 +289,29 @@ Encoding Type:  One-Hot
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 19.1.0 Build 670 09/22/2019 SJ Lite Edition
-    Info: Processing started: Tue Apr 13 09:07:03 2021
+    Info: Processing started: Tue Apr 13 11:41:37 2021
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off parte1maq1 -c parte1maq1
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
-Warning (12125): Using design file parte1maq1.v, which is not specified as a design file for the current project, but contains definitions for 1 design units and 1 entities in project
-    Info (12023): Found entity 1: parte1maq1 File: C:/Users/felip/Downloads/Telegram Desktop/parte1/parte1/parte1maq1/parte1maq1.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file parte1maq1.v
+    Info (12023): Found entity 1: parte1maq1 File: C:/Users/felip/Desktop/CEFET/Materias/AOC2/LAOC2/pratica4/computer_architecture_snooping/parte1/parte1maq1/parte1maq1.v Line: 1
 Info (12127): Elaborating entity "parte1maq1" for the top level hierarchy
-Warning (10036): Verilog HDL or VHDL warning at parte1maq1.v(20): object "mensagem" assigned a value but never read File: C:/Users/felip/Downloads/Telegram Desktop/parte1/parte1/parte1maq1/parte1maq1.v Line: 20
-Warning (10036): Verilog HDL or VHDL warning at parte1maq1.v(20): object "action" assigned a value but never read File: C:/Users/felip/Downloads/Telegram Desktop/parte1/parte1/parte1maq1/parte1maq1.v Line: 20
+Warning (10036): Verilog HDL or VHDL warning at parte1maq1.v(20): object "mensagem" assigned a value but never read File: C:/Users/felip/Desktop/CEFET/Materias/AOC2/LAOC2/pratica4/computer_architecture_snooping/parte1/parte1maq1/parte1maq1.v Line: 20
+Warning (10036): Verilog HDL or VHDL warning at parte1maq1.v(20): object "action" assigned a value but never read File: C:/Users/felip/Desktop/CEFET/Materias/AOC2/LAOC2/pratica4/computer_architecture_snooping/parte1/parte1maq1/parte1maq1.v Line: 20
 Info (17049): 3 registers lost all their fanouts during netlist optimizations.
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
 Warning (21074): Design contains 3 input pin(s) that do not drive logic
-    Warning (15610): No output dependent on input pin "SW[1]" File: C:/Users/felip/Downloads/Telegram Desktop/parte1/parte1/parte1maq1/parte1maq1.v Line: 3
-    Warning (15610): No output dependent on input pin "SW[0]" File: C:/Users/felip/Downloads/Telegram Desktop/parte1/parte1/parte1maq1/parte1maq1.v Line: 3
-    Warning (15610): No output dependent on input pin "clock" File: C:/Users/felip/Downloads/Telegram Desktop/parte1/parte1/parte1maq1/parte1maq1.v Line: 2
+    Warning (15610): No output dependent on input pin "SW[1]" File: C:/Users/felip/Desktop/CEFET/Materias/AOC2/LAOC2/pratica4/computer_architecture_snooping/parte1/parte1maq1/parte1maq1.v Line: 3
+    Warning (15610): No output dependent on input pin "SW[0]" File: C:/Users/felip/Desktop/CEFET/Materias/AOC2/LAOC2/pratica4/computer_architecture_snooping/parte1/parte1maq1/parte1maq1.v Line: 3
+    Warning (15610): No output dependent on input pin "clock" File: C:/Users/felip/Desktop/CEFET/Materias/AOC2/LAOC2/pratica4/computer_architecture_snooping/parte1/parte1maq1/parte1maq1.v Line: 2
 Info (21057): Implemented 3 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 3 input pins
     Info (21059): Implemented 0 output pins
-Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 8 warnings
-    Info: Peak virtual memory: 4728 megabytes
-    Info: Processing ended: Tue Apr 13 09:07:16 2021
-    Info: Elapsed time: 00:00:13
-    Info: Total CPU time (on all processors): 00:00:26
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 7 warnings
+    Info: Peak virtual memory: 4738 megabytes
+    Info: Processing ended: Tue Apr 13 11:41:53 2021
+    Info: Elapsed time: 00:00:16
+    Info: Total CPU time (on all processors): 00:00:40
 
 

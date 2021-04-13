@@ -1,108 +1,122 @@
 module cache #(
   parameter NAME, FILE,
-  parameter ReadMiss, ReadHit, WriteBack
+  parameter [1:0] ReadMiss, ReadHit, WriteBack
 ) (
-  input [1:0] passo,
-  input [8:0] instruction,
-  input [7:0] InBus,
-  output reg [7:0] OutBus,
-  output reg [7:0] q
+  input [1:0] step,
+  input [9:0] instruction,
+  input [8:0] InBus,
+  output reg [8:0] OutBus,
+  output reg [8:0] q
 );
 
   localparam [1:0] Invalid = 0, Shared = 1, Modified = 2;
+  
+  // 4 x EETTTDDDD 
+  // E- Estado    T- Tag    D- Dado a ser escrito
+  reg [8:0] memory [0:3];  
 
-  reg [7:0] memory [0:1];  // 2 x 8
+  wire Op_instruc, EsseProc;
+  wire [1:0] Estado_cache, Tipo_Bus, Bloco;
+  wire [2:0] Tag_instruc, Tag_cache, Tag_Bus;
+  wire [3:0] Valor_instruc, Valor_cache, Valor_Bus;
+							
+							
+  // Dados da Intrucao (Input)         					// Se o valor for:	
+  assign Op_instruc = instruction[9];                 //   0 - Instrução de Load (Read)          1 - Instrução de Store (Write)
+  assign EsseProc = (instruction[8:7] == NAME);       //   0 - A origem é o outro processador    1 -  A origem é o processador atual
+  assign Tag_instruc = instruction[6:4];              // TAG da instrucao
+  assign Valor_instruc = instruction[3:0];            // Valor a ser escrito
 
-  wire iOp, iThis, iIndex;
-  wire [1:0] iTag, aTag, aState, bType, bTag;
-  wire [3:0] iValue, aValue, bValue;
+  
+  // Dados da Cache
+  assign Bloco = Tag_instruc[1:0];
 
-  assign iOp = instruction[8];                 // 0: LOAD                          1: STORE
-  assign iThis = instruction[7:6] == NAME;     // 0: origem e outro processador    1: origem e este processador
-  assign iTag = instruction[5:4];              // TAG da instrucao
-  assign iValue = instruction[3:0];            // Valor a ser escrito
+  assign Estado_cache = memory[ Bloco ][8:7];
+  assign Tag_cache = memory[ Bloco ][6:4];
+  assign Valor_cache = memory[ Bloco ][3:0];
 
-  assign iIndex = iTag[0];
-
-  assign aState = memory[iIndex][7:6];
-  assign aTag = memory[iIndex][5:4];
-  assign aValue = memory[iIndex][3:0];
-
-  assign bType = InBus[7:6];
-  assign bTag = InBus[5:4];
-  assign bValue = InBus[3:0];
+  
+  // Dados do barramento Bus
+  assign Tipo_Bus = InBus[8:7];
+  assign Tag_Bus = InBus[6:4];
+  assign Valor_Bus = InBus[3:0];
 
   initial
     $readmemb(FILE, memory);
 
-  always @(passo) begin
-    OutBus = {ReadHit, 2'b0, 4'b0};
-    case(passo)
+  always @(step) begin
+    OutBus = {ReadHit, 3'b0, 4'b0};
+	 
+    case(step)
+	 
       2'b00:
-        if(iThis) begin
+        if(EsseProc) begin
           // MISS
-          if(aTag != iTag || aState == Invalid) begin
-            // Modified STATE
-            if(aState == Modified) begin
-              OutBus = {WriteBack, aTag, aValue};
+          if(Tag_cache != Tag_instruc || Estado_cache == Invalid) begin
+			 
+            // Para estado Modified 
+            if(Estado_cache == Modified) begin
+              OutBus = {WriteBack, Tag_cache, Valor_cache};
+				  
             end
           end
         end
 
       2'b01:
-        if(iThis) begin
+        if(EsseProc) begin
           // WRITE
-          if(iOp) begin
-            memory[iIndex] = {Modified, iTag, iValue};
-            OutBus = {Invalid, iTag, 4'b0};
+          if(Op_instruc) begin
+            memory[Bloco] = {Modified, Tag_instruc, Valor_instruc};
+            OutBus = {Invalid, Tag_instruc, 4'b0};
 
           // READ
           end else begin
             // MISS
-            if(aTag != iTag || aState == Invalid)
-              OutBus = {ReadMiss, iTag, 4'b0};
+            if(Tag_cache != Tag_instruc || Estado_cache == Invalid)
+              OutBus = {ReadMiss, Tag_instruc, 4'b0};
             else
-              OutBus = {ReadHit, iTag, 4'b0};
+              OutBus = {ReadHit, Tag_instruc, 4'b0};
+				  
           end
         end
 
       2'b10:
-        if(!iThis) begin
+        if(!EsseProc) begin
           // WRITE
-          if(iOp) begin
+          if(Op_instruc) begin
 
             // HIT
-            if(aTag == iTag) begin
-              if(aState == Modified)
-                OutBus = {WriteBack, aTag, aValue};
+            if(Tag_cache == Tag_instruc) begin
+              if(Estado_cache == Modified)
+                OutBus = {WriteBack, Tag_cache, Valor_cache};
 
-              memory[iIndex][7:6] = Invalid;
+              memory[Bloco][8:7] = Invalid;
             end
 
           // READ
           end else begin
 
             // MISS
-            if(bType == ReadMiss) // informacao pode estar desatualizada
-              if(aTag == iTag && aState != Invalid) begin
-                OutBus = {WriteBack, aTag, aValue};
-                memory[iIndex][7:6] = Shared;
+            if(Tipo_Bus == ReadMiss) // informacao pode estar desatualizada
+              if(Tag_cache == Tag_instruc && Estado_cache != Invalid) begin
+                OutBus = {WriteBack, Tag_cache, Valor_cache};
+                memory[Bloco][8:7] = Shared;
               end
           end
         end
 
       default: begin
-        if(iThis) begin
+        if(EsseProc) begin
           // READ
-          if(!iOp) begin
+          if(!Op_instruc) begin
 
             // MISS
-            if(aTag != iTag || aState == Invalid) begin
-              memory[iIndex] = {Shared, bTag, bValue};
+            if(Tag_cache != Tag_instruc || Estado_cache == Invalid) begin
+              memory[Bloco] = {Shared, Tag_Bus, Valor_Bus};
             end
-            q = memory[iIndex];
+            q = memory[Bloco];
           end
-        end else
+        end 
        end
      endcase
    end

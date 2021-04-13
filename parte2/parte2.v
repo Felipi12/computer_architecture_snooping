@@ -1,63 +1,68 @@
-module parte2(clock, SW);
+module parte2(clock, Instruc);
 
-  input clock
-  input [17:9] SW;
+  input clock;
+  input [9:0] Instruc;
 
-  // Cada instrução é dividida da seguinte maneira => op [1] | proc [2] | tag [2] | value [4] = 9 bits
+  // Cada instrução é dividida da seguinte maneira:
+  // Op    1 bit    X---------
+  // proc  2 bits   -XX-------
+  // tag   3 bits   ---XXX----
+  // value 4 bits   ------XXXX
+  // TOTAL 10 bits
 
-  localparam [1:0] PC0 = 0, PC1 = 1;
-  localparam ReadMiss = 1, ReadHit = 2, WriteBack = 3;
+  localparam [1:0] proc1 = 0, proc2 = 1;
+  localparam [1:0] ReadMiss = 2'b01, ReadHit = 2'b10, WriteBack = 2'b11;
 
-  wire [1:0] passo;
-  wire [7:0] OutCache1, OutCache2, OutMemory, OutBus;
-  wire [7:0] q0, q1;
+  wire [1:0] step;
+  wire [8:0] OutCache1, OutCache2, OutMemory, OutBus;
+  wire [8:0] q1, q2;
 
   counter cnt (
     .clock(clock),
-    .q(passo)
+    .q(step)
   );
 
   cache #(
     // COMPLETAR AQUI
-    .NAME(PC0), .FILE("C:/altera/LAOCII/Pratica_04/parte_2/cache"),
+    .NAME(proc1), .FILE("C:/Users/felip/Desktop/CEFET/Materias/AOC2/LAOC2/pratica4/computer_architecture_snooping/parte2/cache1.mem"),
     .ReadMiss(ReadMiss), .ReadHit(ReadHit), .WriteBack(WriteBack)
     ) cache1 (
-    .passo(passo),
-    .instruction(SW),
+    .step(step),
+    .instruction(Instruc),
     .InBus(OutBus),
     .OutBus(OutCache1),
-    .q(q0)
+    .q(q1)
   );
 
   cache #(
     // COMPLETAR AQUI
-    .NAME(PC1), .FILE("C:/altera/LAOCII/Pratica_04/parte_2/cache"),
+    .NAME(proc2), .FILE("C:/Users/felip/Desktop/CEFET/Materias/AOC2/LAOC2/pratica4/computer_architecture_snooping/parte2/cache2.mem"),
     .ReadMiss(ReadMiss), .ReadHit(ReadHit), .WriteBack(WriteBack)
     ) cache2 (
-    .passo(passo),
-    .instruction(SW),
+    .step(step),
+    .instruction(Instruc),
     .InBus(OutBus),
     .OutBus(OutCache2),
-    .q(q1)
+    .q(q2)
   );
 
 
   memory #(
     // COMPLETAR AQUI
-    .FILE("C:/altera/LAOCII/Pratica_04/parte_2/cache"),
+    .FILE("C:/Users/felip/Desktop/CEFET/Materias/AOC2/LAOC2/pratica4/computer_architecture_snooping/parte2/memo.mem"),
     .ReadMiss(ReadMiss),
     .WriteBack(WriteBack)
-  ) MEM (
+  ) Memo (
     .bus(OutBus),
     .q(OutMemory)
   );
 
   bus #(
     .ReadHit(ReadHit)
-  ) BUS (
-    .PC0(OutCache1),
-    .PC1(OutCache2),
-    .MEM(OutMemory),
+  ) Bus_data (
+    .proc1(OutCache1),
+    .proc2(OutCache2),
+    .Memory(OutMemory),
     .q(OutBus)
   );
 

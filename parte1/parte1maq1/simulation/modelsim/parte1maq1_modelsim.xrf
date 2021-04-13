@@ -1,5 +1,6 @@
 vendor_name = ModelSim
-source_file = 1, C:/Users/felip/Downloads/Telegram Desktop/parte1/parte1/parte1maq1/parte1maq1.v
+source_file = 1, C:/Users/felip/Desktop/CEFET/Materias/AOC2/LAOC2/pratica4/computer_architecture_snooping/parte1/parte1maq1/parte1maq1.v
+source_file = 1, C:/Users/felip/Desktop/CEFET/Materias/AOC2/LAOC2/pratica4/computer_architecture_snooping/parte1/parte1maq1/db/parte1maq1.cbx.xml
 design_name = parte1maq1
 instance = comp, \SW[1]~input , SW[1]~input, parte1maq1, 1
 instance = comp, \SW[0]~input , SW[0]~input, parte1maq1, 1

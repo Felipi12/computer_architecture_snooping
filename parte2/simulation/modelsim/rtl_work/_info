@@ -1,0 +1,120 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 dC:/Users/felip/Desktop/CEFET/Materias/AOC2/LAOC2/pratica4/computer_architecture_snooping/parte2/simulation/modelsim
+vbus
+!s110 1618342056
+!i10b 1
+!s100 :ZXCGXM?;?72e`o?GgR5c0
+I>?8KJ6DF4kJI;2AC6CIhN2
+Z1 VDg1SIo80bB@j0V0VzS_@n1
+R0
+w1618331758
+8C:/Users/felip/Desktop/CEFET/Materias/AOC2/LAOC2/pratica4/computer_architecture_snooping/parte2/bus.v
+FC:/Users/felip/Desktop/CEFET/Materias/AOC2/LAOC2/pratica4/computer_architecture_snooping/parte2/bus.v
+L0 1
+Z2 OV;L;10.5b;63
+r1
+!s85 0
+31
+!s108 1618342056.000000
+!s107 C:/Users/felip/Desktop/CEFET/Materias/AOC2/LAOC2/pratica4/computer_architecture_snooping/parte2/bus.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/Users/felip/Desktop/CEFET/Materias/AOC2/LAOC2/pratica4/computer_architecture_snooping/parte2|C:/Users/felip/Desktop/CEFET/Materias/AOC2/LAOC2/pratica4/computer_architecture_snooping/parte2/bus.v|
+!i113 1
+Z3 o-vlog01compat -work work
+Z4 !s92 -vlog01compat -work work +incdir+C:/Users/felip/Desktop/CEFET/Materias/AOC2/LAOC2/pratica4/computer_architecture_snooping/parte2
+Z5 tCvgOpt 0
+vcache
+Z6 !s110 1618342054
+!i10b 1
+!s100 mn4V?ZBn;U9SL;PN_:IPk1
+IGN`bn]j[Q`]M2RlD8GDBR0
+R1
+R0
+w1618341867
+8C:/Users/felip/Desktop/CEFET/Materias/AOC2/LAOC2/pratica4/computer_architecture_snooping/parte2/cache.v
+FC:/Users/felip/Desktop/CEFET/Materias/AOC2/LAOC2/pratica4/computer_architecture_snooping/parte2/cache.v
+L0 1
+R2
+r1
+!s85 0
+31
+Z7 !s108 1618342054.000000
+!s107 C:/Users/felip/Desktop/CEFET/Materias/AOC2/LAOC2/pratica4/computer_architecture_snooping/parte2/cache.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/Users/felip/Desktop/CEFET/Materias/AOC2/LAOC2/pratica4/computer_architecture_snooping/parte2|C:/Users/felip/Desktop/CEFET/Materias/AOC2/LAOC2/pratica4/computer_architecture_snooping/parte2/cache.v|
+!i113 1
+R3
+R4
+R5
+vcounter
+R6
+!i10b 1
+!s100 Vki8GGQOKdIbbYWobJ8bW3
+I@XlcFJRUYgm]R40ML^LaT2
+R1
+R0
+w1618341759
+8C:/Users/felip/Desktop/CEFET/Materias/AOC2/LAOC2/pratica4/computer_architecture_snooping/parte2/counter.v
+FC:/Users/felip/Desktop/CEFET/Materias/AOC2/LAOC2/pratica4/computer_architecture_snooping/parte2/counter.v
+L0 1
+R2
+r1
+!s85 0
+31
+R7
+!s107 C:/Users/felip/Desktop/CEFET/Materias/AOC2/LAOC2/pratica4/computer_architecture_snooping/parte2/counter.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/Users/felip/Desktop/CEFET/Materias/AOC2/LAOC2/pratica4/computer_architecture_snooping/parte2|C:/Users/felip/Desktop/CEFET/Materias/AOC2/LAOC2/pratica4/computer_architecture_snooping/parte2/counter.v|
+!i113 1
+R3
+R4
+R5
+vmemory
+R6
+!i10b 1
+!s100 8k6ik@:fcn;bh4h0g8khW3
+IkdSZl@QZX?Gj050l?`c=b0
+R1
+R0
+w1618331717
+8C:/Users/felip/Desktop/CEFET/Materias/AOC2/LAOC2/pratica4/computer_architecture_snooping/parte2/memory.v
+FC:/Users/felip/Desktop/CEFET/Materias/AOC2/LAOC2/pratica4/computer_architecture_snooping/parte2/memory.v
+L0 1
+R2
+r1
+!s85 0
+31
+Z8 !s108 1618342053.000000
+!s107 C:/Users/felip/Desktop/CEFET/Materias/AOC2/LAOC2/pratica4/computer_architecture_snooping/parte2/memory.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/Users/felip/Desktop/CEFET/Materias/AOC2/LAOC2/pratica4/computer_architecture_snooping/parte2|C:/Users/felip/Desktop/CEFET/Materias/AOC2/LAOC2/pratica4/computer_architecture_snooping/parte2/memory.v|
+!i113 1
+R3
+R4
+R5
+vparte2
+!s110 1618342053
+!i10b 1
+!s100 0^FCDcz`j^5[b00Bf<Kn=2
+IjhTUX074^EQlaKSRDlYaF1
+R1
+R0
+w1618341723
+8C:/Users/felip/Desktop/CEFET/Materias/AOC2/LAOC2/pratica4/computer_architecture_snooping/parte2/parte2.v
+FC:/Users/felip/Desktop/CEFET/Materias/AOC2/LAOC2/pratica4/computer_architecture_snooping/parte2/parte2.v
+L0 1
+R2
+r1
+!s85 0
+31
+R8
+!s107 C:/Users/felip/Desktop/CEFET/Materias/AOC2/LAOC2/pratica4/computer_architecture_snooping/parte2/parte2.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/Users/felip/Desktop/CEFET/Materias/AOC2/LAOC2/pratica4/computer_architecture_snooping/parte2|C:/Users/felip/Desktop/CEFET/Materias/AOC2/LAOC2/pratica4/computer_architecture_snooping/parte2/parte2.v|
+!i113 1
+R3
+R4
+R5

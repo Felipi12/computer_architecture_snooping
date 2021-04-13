@@ -7,26 +7,26 @@ z2
 !i10e 25
 !i10f 100
 cModel Technology
-Z0 dC:/Users/felip/Downloads/Telegram Desktop/parte1/parte1/parte1maq1/simulation/modelsim
+Z0 dC:/Users/felip/Desktop/CEFET/Materias/AOC2/LAOC2/pratica4/computer_architecture_snooping/parte1/parte1maq1/simulation/modelsim
 vparte1maq1
-!s110 1618315914
+!s110 1618325024
 !i10b 1
 !s100 ^Q6ANO``KPcJoSOg^CNCO3
-I>@iWkD3U:2_YD<XYJ9z7V3
+I1An1Y[?>2f[C@m`WECn<<3
 VDg1SIo80bB@j0V0VzS_@n1
 R0
 w1618265725
-8C:/Users/felip/Downloads/Telegram Desktop/parte1/parte1/parte1maq1/parte1maq1.v
-FC:/Users/felip/Downloads/Telegram Desktop/parte1/parte1/parte1maq1/parte1maq1.v
+8C:/Users/felip/Desktop/CEFET/Materias/AOC2/LAOC2/pratica4/computer_architecture_snooping/parte1/parte1maq1/parte1maq1.v
+FC:/Users/felip/Desktop/CEFET/Materias/AOC2/LAOC2/pratica4/computer_architecture_snooping/parte1/parte1maq1/parte1maq1.v
 L0 1
 OV;L;10.5b;63
 r1
 !s85 0
 31
-!s108 1618315914.000000
-!s107 C:/Users/felip/Downloads/Telegram Desktop/parte1/parte1/parte1maq1/parte1maq1.v|
-!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/Users/felip/Downloads/Telegram Desktop/parte1/parte1/parte1maq1|C:/Users/felip/Downloads/Telegram Desktop/parte1/parte1/parte1maq1/parte1maq1.v|
+!s108 1618325024.000000
+!s107 C:/Users/felip/Desktop/CEFET/Materias/AOC2/LAOC2/pratica4/computer_architecture_snooping/parte1/parte1maq1/parte1maq1.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/Users/felip/Desktop/CEFET/Materias/AOC2/LAOC2/pratica4/computer_architecture_snooping/parte1/parte1maq1|C:/Users/felip/Desktop/CEFET/Materias/AOC2/LAOC2/pratica4/computer_architecture_snooping/parte1/parte1maq1/parte1maq1.v|
 !i113 1
 o-vlog01compat -work work
-!s92 -vlog01compat -work work {+incdir+C:/Users/felip/Downloads/Telegram Desktop/parte1/parte1/parte1maq1}
+!s92 -vlog01compat -work work +incdir+C:/Users/felip/Desktop/CEFET/Materias/AOC2/LAOC2/pratica4/computer_architecture_snooping/parte1/parte1maq1
 tCvgOpt 0
