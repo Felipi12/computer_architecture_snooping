@@ -41,5 +41,4 @@ do {C:/Users/mariz/Desktop/LAOC II/pratica4/parte1/parte1maq2/simulation/modelsi
 # 1
 add wave -position 0 -format Logic -height 17 -editable 2 Edit:/parte1maq2/clock
 add wave -position 1 -autoscale 1 -format Literal -height 17 -editable 2 Edit:/parte1maq2/SW
-wave modify -driver freeze -pattern counter -startvalue 00 -endvalue 11 -type Range -direction Up -period 100ps -step 1 -repeat forever -range 1 0 -starttime 0ps -endtime 300ps Edit:/parte1maq2/SW
 run -all

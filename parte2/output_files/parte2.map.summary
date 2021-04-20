@@ -1,8 +1,8 @@
-Analysis & Synthesis Status : Successful - Tue Apr 13 16:26:26 2021
-Quartus Prime Version : 19.1.0 Build 670 09/22/2019 SJ Lite Edition
+Analysis & Synthesis Status : Successful - Wed Apr 14 10:52:06 2021
+Quartus II 64-Bit Version : 13.0.1 Build 232 06/12/2013 SP 1 SJ Web Edition
 Revision Name : parte2
 Top-level Entity Name : parte2
-Family : Cyclone IV E
+Family : Cyclone II
 Total logic elements : 0
     Total combinational functions : 0
     Dedicated logic registers : 0

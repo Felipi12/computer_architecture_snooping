@@ -4,7 +4,7 @@
 ; Hierarchy ; Input ; Constant Input ; Unused Input ; Floating Input ; Output ; Constant Output ; Unused Output ; Floating Output ; Bidir ; Constant Bidir ; Unused Bidir ; Input only Bidir ; Output only Bidir ;
 +-----------+-------+----------------+--------------+----------------+--------+-----------------+---------------+-----------------+-------+----------------+--------------+------------------+-------------------+
 ; Bus_data  ; 27    ; 0              ; 0            ; 0              ; 9      ; 0               ; 0             ; 0               ; 0     ; 0              ; 0            ; 0                ; 0                 ;
-; Memo      ; 9     ; 2              ; 0            ; 2              ; 9      ; 2               ; 2             ; 2               ; 0     ; 0              ; 0            ; 0                ; 0                 ;
+; Memo      ; 9     ; 5              ; 4            ; 5              ; 9      ; 5               ; 5             ; 5               ; 0     ; 0              ; 0            ; 0                ; 0                 ;
 ; cache2    ; 21    ; 0              ; 0            ; 0              ; 18     ; 0               ; 0             ; 0               ; 0     ; 0              ; 0            ; 0                ; 0                 ;
 ; cache1    ; 21    ; 0              ; 0            ; 0              ; 18     ; 0               ; 0             ; 0               ; 0     ; 0              ; 0            ; 0                ; 0                 ;
 ; cnt       ; 1     ; 0              ; 0            ; 0              ; 2      ; 0               ; 0             ; 0               ; 0     ; 0              ; 0            ; 0                ; 0                 ;

@@ -1,5 +1,5 @@
 EDA Netlist Writer report for parte1maq2
-Mon Apr 12 20:48:38 2021
+Wed Apr 14 11:33:33 2021
 Quartus II 64-Bit Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
 
 
@@ -36,7 +36,7 @@ applicable agreement for further details.
 +-------------------------------------------------------------------+
 ; EDA Netlist Writer Summary                                        ;
 +---------------------------+---------------------------------------+
-; EDA Netlist Writer Status ; Successful - Mon Apr 12 20:48:38 2021 ;
+; EDA Netlist Writer Status ; Successful - Wed Apr 14 11:33:33 2021 ;
 ; Revision Name             ; parte1maq2                            ;
 ; Top-level Entity Name     ; parte1maq2                            ;
 ; Family                    ; Cyclone II                            ;
@@ -84,12 +84,12 @@ applicable agreement for further details.
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit EDA Netlist Writer
     Info: Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
-    Info: Processing started: Mon Apr 12 20:48:37 2021
+    Info: Processing started: Wed Apr 14 11:33:32 2021
 Info: Command: quartus_eda --read_settings_files=off --write_settings_files=off parte1maq2 -c parte1maq2
 Info (204026): Generated files "parte1maq2.vo", "parte1maq2_fast.vo", "parte1maq2_v.sdo" and "parte1maq2_v_fast.sdo" in directory "C:/Users/mariz/Desktop/LAOC II/pratica4/parte1/parte1maq2/simulation/modelsim/" for EDA simulation tool
 Info: Quartus II 64-Bit EDA Netlist Writer was successful. 0 errors, 0 warnings
     Info: Peak virtual memory: 4528 megabytes
-    Info: Processing ended: Mon Apr 12 20:48:38 2021
+    Info: Processing ended: Wed Apr 14 11:33:33 2021
     Info: Elapsed time: 00:00:01
     Info: Total CPU time (on all processors): 00:00:01
 

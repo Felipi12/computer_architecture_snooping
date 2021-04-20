@@ -394,10 +394,10 @@ q[8] <= q[8]$latch.DB_MAX_OUTPUT_PORT_TYPE
 
 
 |parte2|memory:Memo
-bus[0] => memory.DATAIN
-bus[1] => memory.DATAIN1
-bus[2] => memory.DATAIN2
-bus[3] => memory.DATAIN3
+bus[0] => ~NO_FANOUT~
+bus[1] => ~NO_FANOUT~
+bus[2] => ~NO_FANOUT~
+bus[3] => ~NO_FANOUT~
 bus[4] => memory.RADDR
 bus[4] => memory.WADDR
 bus[5] => memory.RADDR1
@@ -412,9 +412,9 @@ q[0] <= q[0]$latch.DB_MAX_OUTPUT_PORT_TYPE
 q[1] <= q[1]$latch.DB_MAX_OUTPUT_PORT_TYPE
 q[2] <= q[2]$latch.DB_MAX_OUTPUT_PORT_TYPE
 q[3] <= q[3]$latch.DB_MAX_OUTPUT_PORT_TYPE
-q[4] <= q[4]$latch.DB_MAX_OUTPUT_PORT_TYPE
-q[5] <= q[5]$latch.DB_MAX_OUTPUT_PORT_TYPE
-q[6] <= q[6]$latch.DB_MAX_OUTPUT_PORT_TYPE
+q[4] <= <GND>
+q[5] <= <GND>
+q[6] <= <GND>
 q[7] <= <GND>
 q[8] <= <GND>
 

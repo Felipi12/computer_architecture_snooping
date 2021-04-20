@@ -1,26 +1,25 @@
-// Copyright (C) 2019  Intel Corporation. All rights reserved.
-// Your use of Intel Corporation's design tools, logic functions 
-// and other software and tools, and any partner logic 
+// Copyright (C) 1991-2013 Altera Corporation
+// Your use of Altera Corporation's design tools, logic functions 
+// and other software and tools, and its AMPP partner logic 
 // functions, and any output files from any of the foregoing 
 // (including device programming or simulation files), and any 
 // associated documentation or information are expressly subject 
-// to the terms and conditions of the Intel Program License 
-// Subscription Agreement, the Intel Quartus Prime License Agreement,
-// the Intel FPGA IP License Agreement, or other applicable license
-// agreement, including, without limitation, that your use is for
-// the sole purpose of programming logic devices manufactured by
-// Intel and sold by Intel or its authorized distributors.  Please
-// refer to the applicable agreement for further details, at
-// https://fpgasoftware.intel.com/eula.
+// to the terms and conditions of the Altera Program License 
+// Subscription Agreement, Altera MegaCore Function License 
+// Agreement, or other applicable license agreement, including, 
+// without limitation, that your use is for the sole purpose of 
+// programming logic devices manufactured by Altera and sold by 
+// Altera or its authorized distributors.  Please refer to the 
+// applicable agreement for further details.
 
 // VENDOR "Altera"
-// PROGRAM "Quartus Prime"
-// VERSION "Version 19.1.0 Build 670 09/22/2019 SJ Lite Edition"
+// PROGRAM "Quartus II 64-Bit"
+// VERSION "Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition"
 
-// DATE "04/13/2021 16:26:43"
+// DATE "04/14/2021 10:52:20"
 
 // 
-// Device: Altera EP4CE6E22C6 Package TQFP144
+// Device: Altera EP2C5F256C6 Package FBGA256
 // 
 
 // 
@@ -36,17 +35,17 @@ input 	clock;
 input 	[9:0] Instruc;
 
 // Design Ports Information
-// clock	=>  Location: PIN_83,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// Instruc[0]	=>  Location: PIN_65,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// Instruc[1]	=>  Location: PIN_60,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// Instruc[2]	=>  Location: PIN_52,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// Instruc[3]	=>  Location: PIN_67,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// Instruc[4]	=>  Location: PIN_113,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// Instruc[5]	=>  Location: PIN_111,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// Instruc[6]	=>  Location: PIN_50,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// Instruc[7]	=>  Location: PIN_141,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// Instruc[8]	=>  Location: PIN_7,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// Instruc[9]	=>  Location: PIN_142,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// clock	=>  Location: PIN_L11,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: Default
+// Instruc[0]	=>  Location: PIN_P16,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: Default
+// Instruc[1]	=>  Location: PIN_G6,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: Default
+// Instruc[2]	=>  Location: PIN_E5,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: Default
+// Instruc[3]	=>  Location: PIN_M11,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: Default
+// Instruc[4]	=>  Location: PIN_B14,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: Default
+// Instruc[5]	=>  Location: PIN_T10,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: Default
+// Instruc[6]	=>  Location: PIN_M2,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: Default
+// Instruc[7]	=>  Location: PIN_D6,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: Default
+// Instruc[8]	=>  Location: PIN_E2,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: Default
+// Instruc[9]	=>  Location: PIN_H2,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: Default
 
 
 wire gnd;
@@ -60,167 +59,406 @@ assign unknown = 1'bx;
 tri1 devclrn;
 tri1 devpor;
 tri1 devoe;
-wire \clock~input_o ;
-wire \Instruc[0]~input_o ;
-wire \Instruc[1]~input_o ;
-wire \Instruc[2]~input_o ;
-wire \Instruc[3]~input_o ;
-wire \Instruc[4]~input_o ;
-wire \Instruc[5]~input_o ;
-wire \Instruc[6]~input_o ;
-wire \Instruc[7]~input_o ;
-wire \Instruc[8]~input_o ;
-wire \Instruc[9]~input_o ;
+// synopsys translate_off
+initial $sdf_annotate("parte2_v.sdo");
+// synopsys translate_on
 
 
-hard_block auto_generated_inst(
-	.devpor(devpor),
+
+// Location: PIN_L11,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: Default
+cycloneii_io \clock~I (
+	.datain(gnd),
+	.oe(gnd),
+	.outclk(gnd),
+	.outclkena(vcc),
+	.inclk(gnd),
+	.inclkena(vcc),
+	.areset(gnd),
+	.sreset(gnd),
+	.differentialin(gnd),
+	.linkin(gnd),
 	.devclrn(devclrn),
-	.devoe(devoe));
-
-// Location: IOIBUF_X34_Y9_N22
-cycloneive_io_ibuf \clock~input (
-	.i(clock),
-	.ibar(gnd),
-	.o(\clock~input_o ));
+	.devpor(devpor),
+	.devoe(devoe),
+	.combout(),
+	.regout(),
+	.differentialout(),
+	.linkout(),
+	.padio(clock));
 // synopsys translate_off
-defparam \clock~input .bus_hold = "false";
-defparam \clock~input .simulate_z_as = "z";
+defparam \clock~I .input_async_reset = "none";
+defparam \clock~I .input_power_up = "low";
+defparam \clock~I .input_register_mode = "none";
+defparam \clock~I .input_sync_reset = "none";
+defparam \clock~I .oe_async_reset = "none";
+defparam \clock~I .oe_power_up = "low";
+defparam \clock~I .oe_register_mode = "none";
+defparam \clock~I .oe_sync_reset = "none";
+defparam \clock~I .operation_mode = "input";
+defparam \clock~I .output_async_reset = "none";
+defparam \clock~I .output_power_up = "low";
+defparam \clock~I .output_register_mode = "none";
+defparam \clock~I .output_sync_reset = "none";
 // synopsys translate_on
 
-// Location: IOIBUF_X28_Y0_N22
-cycloneive_io_ibuf \Instruc[0]~input (
-	.i(Instruc[0]),
-	.ibar(gnd),
-	.o(\Instruc[0]~input_o ));
+// Location: PIN_P16,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: Default
+cycloneii_io \Instruc[0]~I (
+	.datain(gnd),
+	.oe(gnd),
+	.outclk(gnd),
+	.outclkena(vcc),
+	.inclk(gnd),
+	.inclkena(vcc),
+	.areset(gnd),
+	.sreset(gnd),
+	.differentialin(gnd),
+	.linkin(gnd),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.devoe(devoe),
+	.combout(),
+	.regout(),
+	.differentialout(),
+	.linkout(),
+	.padio(Instruc[0]));
 // synopsys translate_off
-defparam \Instruc[0]~input .bus_hold = "false";
-defparam \Instruc[0]~input .simulate_z_as = "z";
+defparam \Instruc[0]~I .input_async_reset = "none";
+defparam \Instruc[0]~I .input_power_up = "low";
+defparam \Instruc[0]~I .input_register_mode = "none";
+defparam \Instruc[0]~I .input_sync_reset = "none";
+defparam \Instruc[0]~I .oe_async_reset = "none";
+defparam \Instruc[0]~I .oe_power_up = "low";
+defparam \Instruc[0]~I .oe_register_mode = "none";
+defparam \Instruc[0]~I .oe_sync_reset = "none";
+defparam \Instruc[0]~I .operation_mode = "input";
+defparam \Instruc[0]~I .output_async_reset = "none";
+defparam \Instruc[0]~I .output_power_up = "low";
+defparam \Instruc[0]~I .output_register_mode = "none";
+defparam \Instruc[0]~I .output_sync_reset = "none";
 // synopsys translate_on
 
-// Location: IOIBUF_X23_Y0_N8
-cycloneive_io_ibuf \Instruc[1]~input (
-	.i(Instruc[1]),
-	.ibar(gnd),
-	.o(\Instruc[1]~input_o ));
+// Location: PIN_G6,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: Default
+cycloneii_io \Instruc[1]~I (
+	.datain(gnd),
+	.oe(gnd),
+	.outclk(gnd),
+	.outclkena(vcc),
+	.inclk(gnd),
+	.inclkena(vcc),
+	.areset(gnd),
+	.sreset(gnd),
+	.differentialin(gnd),
+	.linkin(gnd),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.devoe(devoe),
+	.combout(),
+	.regout(),
+	.differentialout(),
+	.linkout(),
+	.padio(Instruc[1]));
 // synopsys translate_off
-defparam \Instruc[1]~input .bus_hold = "false";
-defparam \Instruc[1]~input .simulate_z_as = "z";
+defparam \Instruc[1]~I .input_async_reset = "none";
+defparam \Instruc[1]~I .input_power_up = "low";
+defparam \Instruc[1]~I .input_register_mode = "none";
+defparam \Instruc[1]~I .input_sync_reset = "none";
+defparam \Instruc[1]~I .oe_async_reset = "none";
+defparam \Instruc[1]~I .oe_power_up = "low";
+defparam \Instruc[1]~I .oe_register_mode = "none";
+defparam \Instruc[1]~I .oe_sync_reset = "none";
+defparam \Instruc[1]~I .operation_mode = "input";
+defparam \Instruc[1]~I .output_async_reset = "none";
+defparam \Instruc[1]~I .output_power_up = "low";
+defparam \Instruc[1]~I .output_register_mode = "none";
+defparam \Instruc[1]~I .output_sync_reset = "none";
 // synopsys translate_on
 
-// Location: IOIBUF_X16_Y0_N8
-cycloneive_io_ibuf \Instruc[2]~input (
-	.i(Instruc[2]),
-	.ibar(gnd),
-	.o(\Instruc[2]~input_o ));
+// Location: PIN_E5,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: Default
+cycloneii_io \Instruc[2]~I (
+	.datain(gnd),
+	.oe(gnd),
+	.outclk(gnd),
+	.outclkena(vcc),
+	.inclk(gnd),
+	.inclkena(vcc),
+	.areset(gnd),
+	.sreset(gnd),
+	.differentialin(gnd),
+	.linkin(gnd),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.devoe(devoe),
+	.combout(),
+	.regout(),
+	.differentialout(),
+	.linkout(),
+	.padio(Instruc[2]));
 // synopsys translate_off
-defparam \Instruc[2]~input .bus_hold = "false";
-defparam \Instruc[2]~input .simulate_z_as = "z";
+defparam \Instruc[2]~I .input_async_reset = "none";
+defparam \Instruc[2]~I .input_power_up = "low";
+defparam \Instruc[2]~I .input_register_mode = "none";
+defparam \Instruc[2]~I .input_sync_reset = "none";
+defparam \Instruc[2]~I .oe_async_reset = "none";
+defparam \Instruc[2]~I .oe_power_up = "low";
+defparam \Instruc[2]~I .oe_register_mode = "none";
+defparam \Instruc[2]~I .oe_sync_reset = "none";
+defparam \Instruc[2]~I .operation_mode = "input";
+defparam \Instruc[2]~I .output_async_reset = "none";
+defparam \Instruc[2]~I .output_power_up = "low";
+defparam \Instruc[2]~I .output_register_mode = "none";
+defparam \Instruc[2]~I .output_sync_reset = "none";
 // synopsys translate_on
 
-// Location: IOIBUF_X30_Y0_N22
-cycloneive_io_ibuf \Instruc[3]~input (
-	.i(Instruc[3]),
-	.ibar(gnd),
-	.o(\Instruc[3]~input_o ));
+// Location: PIN_M11,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: Default
+cycloneii_io \Instruc[3]~I (
+	.datain(gnd),
+	.oe(gnd),
+	.outclk(gnd),
+	.outclkena(vcc),
+	.inclk(gnd),
+	.inclkena(vcc),
+	.areset(gnd),
+	.sreset(gnd),
+	.differentialin(gnd),
+	.linkin(gnd),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.devoe(devoe),
+	.combout(),
+	.regout(),
+	.differentialout(),
+	.linkout(),
+	.padio(Instruc[3]));
 // synopsys translate_off
-defparam \Instruc[3]~input .bus_hold = "false";
-defparam \Instruc[3]~input .simulate_z_as = "z";
+defparam \Instruc[3]~I .input_async_reset = "none";
+defparam \Instruc[3]~I .input_power_up = "low";
+defparam \Instruc[3]~I .input_register_mode = "none";
+defparam \Instruc[3]~I .input_sync_reset = "none";
+defparam \Instruc[3]~I .oe_async_reset = "none";
+defparam \Instruc[3]~I .oe_power_up = "low";
+defparam \Instruc[3]~I .oe_register_mode = "none";
+defparam \Instruc[3]~I .oe_sync_reset = "none";
+defparam \Instruc[3]~I .operation_mode = "input";
+defparam \Instruc[3]~I .output_async_reset = "none";
+defparam \Instruc[3]~I .output_power_up = "low";
+defparam \Instruc[3]~I .output_register_mode = "none";
+defparam \Instruc[3]~I .output_sync_reset = "none";
 // synopsys translate_on
 
-// Location: IOIBUF_X28_Y24_N8
-cycloneive_io_ibuf \Instruc[4]~input (
-	.i(Instruc[4]),
-	.ibar(gnd),
-	.o(\Instruc[4]~input_o ));
+// Location: PIN_B14,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: Default
+cycloneii_io \Instruc[4]~I (
+	.datain(gnd),
+	.oe(gnd),
+	.outclk(gnd),
+	.outclkena(vcc),
+	.inclk(gnd),
+	.inclkena(vcc),
+	.areset(gnd),
+	.sreset(gnd),
+	.differentialin(gnd),
+	.linkin(gnd),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.devoe(devoe),
+	.combout(),
+	.regout(),
+	.differentialout(),
+	.linkout(),
+	.padio(Instruc[4]));
 // synopsys translate_off
-defparam \Instruc[4]~input .bus_hold = "false";
-defparam \Instruc[4]~input .simulate_z_as = "z";
+defparam \Instruc[4]~I .input_async_reset = "none";
+defparam \Instruc[4]~I .input_power_up = "low";
+defparam \Instruc[4]~I .input_register_mode = "none";
+defparam \Instruc[4]~I .input_sync_reset = "none";
+defparam \Instruc[4]~I .oe_async_reset = "none";
+defparam \Instruc[4]~I .oe_power_up = "low";
+defparam \Instruc[4]~I .oe_register_mode = "none";
+defparam \Instruc[4]~I .oe_sync_reset = "none";
+defparam \Instruc[4]~I .operation_mode = "input";
+defparam \Instruc[4]~I .output_async_reset = "none";
+defparam \Instruc[4]~I .output_power_up = "low";
+defparam \Instruc[4]~I .output_register_mode = "none";
+defparam \Instruc[4]~I .output_sync_reset = "none";
 // synopsys translate_on
 
-// Location: IOIBUF_X30_Y24_N22
-cycloneive_io_ibuf \Instruc[5]~input (
-	.i(Instruc[5]),
-	.ibar(gnd),
-	.o(\Instruc[5]~input_o ));
+// Location: PIN_T10,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: Default
+cycloneii_io \Instruc[5]~I (
+	.datain(gnd),
+	.oe(gnd),
+	.outclk(gnd),
+	.outclkena(vcc),
+	.inclk(gnd),
+	.inclkena(vcc),
+	.areset(gnd),
+	.sreset(gnd),
+	.differentialin(gnd),
+	.linkin(gnd),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.devoe(devoe),
+	.combout(),
+	.regout(),
+	.differentialout(),
+	.linkout(),
+	.padio(Instruc[5]));
 // synopsys translate_off
-defparam \Instruc[5]~input .bus_hold = "false";
-defparam \Instruc[5]~input .simulate_z_as = "z";
+defparam \Instruc[5]~I .input_async_reset = "none";
+defparam \Instruc[5]~I .input_power_up = "low";
+defparam \Instruc[5]~I .input_register_mode = "none";
+defparam \Instruc[5]~I .input_sync_reset = "none";
+defparam \Instruc[5]~I .oe_async_reset = "none";
+defparam \Instruc[5]~I .oe_power_up = "low";
+defparam \Instruc[5]~I .oe_register_mode = "none";
+defparam \Instruc[5]~I .oe_sync_reset = "none";
+defparam \Instruc[5]~I .operation_mode = "input";
+defparam \Instruc[5]~I .output_async_reset = "none";
+defparam \Instruc[5]~I .output_power_up = "low";
+defparam \Instruc[5]~I .output_register_mode = "none";
+defparam \Instruc[5]~I .output_sync_reset = "none";
 // synopsys translate_on
 
-// Location: IOIBUF_X13_Y0_N1
-cycloneive_io_ibuf \Instruc[6]~input (
-	.i(Instruc[6]),
-	.ibar(gnd),
-	.o(\Instruc[6]~input_o ));
+// Location: PIN_M2,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: Default
+cycloneii_io \Instruc[6]~I (
+	.datain(gnd),
+	.oe(gnd),
+	.outclk(gnd),
+	.outclkena(vcc),
+	.inclk(gnd),
+	.inclkena(vcc),
+	.areset(gnd),
+	.sreset(gnd),
+	.differentialin(gnd),
+	.linkin(gnd),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.devoe(devoe),
+	.combout(),
+	.regout(),
+	.differentialout(),
+	.linkout(),
+	.padio(Instruc[6]));
 // synopsys translate_off
-defparam \Instruc[6]~input .bus_hold = "false";
-defparam \Instruc[6]~input .simulate_z_as = "z";
+defparam \Instruc[6]~I .input_async_reset = "none";
+defparam \Instruc[6]~I .input_power_up = "low";
+defparam \Instruc[6]~I .input_register_mode = "none";
+defparam \Instruc[6]~I .input_sync_reset = "none";
+defparam \Instruc[6]~I .oe_async_reset = "none";
+defparam \Instruc[6]~I .oe_power_up = "low";
+defparam \Instruc[6]~I .oe_register_mode = "none";
+defparam \Instruc[6]~I .oe_sync_reset = "none";
+defparam \Instruc[6]~I .operation_mode = "input";
+defparam \Instruc[6]~I .output_async_reset = "none";
+defparam \Instruc[6]~I .output_power_up = "low";
+defparam \Instruc[6]~I .output_register_mode = "none";
+defparam \Instruc[6]~I .output_sync_reset = "none";
 // synopsys translate_on
 
-// Location: IOIBUF_X5_Y24_N8
-cycloneive_io_ibuf \Instruc[7]~input (
-	.i(Instruc[7]),
-	.ibar(gnd),
-	.o(\Instruc[7]~input_o ));
+// Location: PIN_D6,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: Default
+cycloneii_io \Instruc[7]~I (
+	.datain(gnd),
+	.oe(gnd),
+	.outclk(gnd),
+	.outclkena(vcc),
+	.inclk(gnd),
+	.inclkena(vcc),
+	.areset(gnd),
+	.sreset(gnd),
+	.differentialin(gnd),
+	.linkin(gnd),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.devoe(devoe),
+	.combout(),
+	.regout(),
+	.differentialout(),
+	.linkout(),
+	.padio(Instruc[7]));
 // synopsys translate_off
-defparam \Instruc[7]~input .bus_hold = "false";
-defparam \Instruc[7]~input .simulate_z_as = "z";
+defparam \Instruc[7]~I .input_async_reset = "none";
+defparam \Instruc[7]~I .input_power_up = "low";
+defparam \Instruc[7]~I .input_register_mode = "none";
+defparam \Instruc[7]~I .input_sync_reset = "none";
+defparam \Instruc[7]~I .oe_async_reset = "none";
+defparam \Instruc[7]~I .oe_power_up = "low";
+defparam \Instruc[7]~I .oe_register_mode = "none";
+defparam \Instruc[7]~I .oe_sync_reset = "none";
+defparam \Instruc[7]~I .operation_mode = "input";
+defparam \Instruc[7]~I .output_async_reset = "none";
+defparam \Instruc[7]~I .output_power_up = "low";
+defparam \Instruc[7]~I .output_register_mode = "none";
+defparam \Instruc[7]~I .output_sync_reset = "none";
 // synopsys translate_on
 
-// Location: IOIBUF_X0_Y21_N8
-cycloneive_io_ibuf \Instruc[8]~input (
-	.i(Instruc[8]),
-	.ibar(gnd),
-	.o(\Instruc[8]~input_o ));
+// Location: PIN_E2,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: Default
+cycloneii_io \Instruc[8]~I (
+	.datain(gnd),
+	.oe(gnd),
+	.outclk(gnd),
+	.outclkena(vcc),
+	.inclk(gnd),
+	.inclkena(vcc),
+	.areset(gnd),
+	.sreset(gnd),
+	.differentialin(gnd),
+	.linkin(gnd),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.devoe(devoe),
+	.combout(),
+	.regout(),
+	.differentialout(),
+	.linkout(),
+	.padio(Instruc[8]));
 // synopsys translate_off
-defparam \Instruc[8]~input .bus_hold = "false";
-defparam \Instruc[8]~input .simulate_z_as = "z";
+defparam \Instruc[8]~I .input_async_reset = "none";
+defparam \Instruc[8]~I .input_power_up = "low";
+defparam \Instruc[8]~I .input_register_mode = "none";
+defparam \Instruc[8]~I .input_sync_reset = "none";
+defparam \Instruc[8]~I .oe_async_reset = "none";
+defparam \Instruc[8]~I .oe_power_up = "low";
+defparam \Instruc[8]~I .oe_register_mode = "none";
+defparam \Instruc[8]~I .oe_sync_reset = "none";
+defparam \Instruc[8]~I .operation_mode = "input";
+defparam \Instruc[8]~I .output_async_reset = "none";
+defparam \Instruc[8]~I .output_power_up = "low";
+defparam \Instruc[8]~I .output_register_mode = "none";
+defparam \Instruc[8]~I .output_sync_reset = "none";
 // synopsys translate_on
 
-// Location: IOIBUF_X3_Y24_N22
-cycloneive_io_ibuf \Instruc[9]~input (
-	.i(Instruc[9]),
-	.ibar(gnd),
-	.o(\Instruc[9]~input_o ));
+// Location: PIN_H2,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: Default
+cycloneii_io \Instruc[9]~I (
+	.datain(gnd),
+	.oe(gnd),
+	.outclk(gnd),
+	.outclkena(vcc),
+	.inclk(gnd),
+	.inclkena(vcc),
+	.areset(gnd),
+	.sreset(gnd),
+	.differentialin(gnd),
+	.linkin(gnd),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.devoe(devoe),
+	.combout(),
+	.regout(),
+	.differentialout(),
+	.linkout(),
+	.padio(Instruc[9]));
 // synopsys translate_off
-defparam \Instruc[9]~input .bus_hold = "false";
-defparam \Instruc[9]~input .simulate_z_as = "z";
+defparam \Instruc[9]~I .input_async_reset = "none";
+defparam \Instruc[9]~I .input_power_up = "low";
+defparam \Instruc[9]~I .input_register_mode = "none";
+defparam \Instruc[9]~I .input_sync_reset = "none";
+defparam \Instruc[9]~I .oe_async_reset = "none";
+defparam \Instruc[9]~I .oe_power_up = "low";
+defparam \Instruc[9]~I .oe_register_mode = "none";
+defparam \Instruc[9]~I .oe_sync_reset = "none";
+defparam \Instruc[9]~I .operation_mode = "input";
+defparam \Instruc[9]~I .output_async_reset = "none";
+defparam \Instruc[9]~I .output_power_up = "low";
+defparam \Instruc[9]~I .output_register_mode = "none";
+defparam \Instruc[9]~I .output_sync_reset = "none";
 // synopsys translate_on
-
-endmodule
-
-module hard_block (
-
-	devpor,
-	devclrn,
-	devoe);
-
-// Design Ports Information
-// ~ALTERA_ASDO_DATA1~	=>  Location: PIN_6,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// ~ALTERA_FLASH_nCE_nCSO~	=>  Location: PIN_8,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// ~ALTERA_DCLK~	=>  Location: PIN_12,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// ~ALTERA_DATA0~	=>  Location: PIN_13,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// ~ALTERA_nCEO~	=>  Location: PIN_101,	 I/O Standard: 2.5 V,	 Current Strength: 8mA
-
-input 	devpor;
-input 	devclrn;
-input 	devoe;
-
-wire gnd;
-wire vcc;
-wire unknown;
-
-assign gnd = 1'b0;
-assign vcc = 1'b1;
-assign unknown = 1'bx;
-
-wire \~ALTERA_ASDO_DATA1~~padout ;
-wire \~ALTERA_FLASH_nCE_nCSO~~padout ;
-wire \~ALTERA_DATA0~~padout ;
-wire \~ALTERA_ASDO_DATA1~~ibuf_o ;
-wire \~ALTERA_FLASH_nCE_nCSO~~ibuf_o ;
-wire \~ALTERA_DATA0~~ibuf_o ;
-
 
 endmodule

@@ -1,0 +1,23 @@
+-- begin_signature
+-- memory(FILE
+-- "C:/Users/mariz/Desktop/LAOC II/pratica4/parte2/memo.mem"
+-- ReadMiss
+-- 2'b01
+-- WriteBack
+-- 2'b11)
+-- end_signature
+WIDTH=7;
+DEPTH=7;
+
+ADDRESS_RADIX=UNS;
+DATA_RADIX=BIN;
+
+CONTENT BEGIN
+	6 :	1100101;
+	5 :	1010100;
+	4 :	1000011;
+	3 :	0110010;
+	2 :	0100001;
+	1 :	0010000;
+	0 :	0000001;
+END;

@@ -9,7 +9,7 @@ module cache #(
   output reg [8:0] q
 );
 
-  localparam [1:0] Invalid = 0, Shared = 1, Modified = 2;
+  localparam [1:0] Invalid = 2'b00, Shared = 2'b01, Modified = 2'b10;
   
   // 4 x EETTTDDDD 
   // E- Estado    T- Tag    D- Dado a ser escrito
@@ -22,8 +22,8 @@ module cache #(
 							
 							
   // Dados da Intrucao (Input)         					// Se o valor for:	
-  assign Op_instruc = instruction[9];                 //   0 - Instrução de Load (Read)          1 - Instrução de Store (Write)
-  assign EsseProc = (instruction[8:7] == NAME);       //   0 - A origem é o outro processador    1 -  A origem é o processador atual
+  assign Op_instruc = instruction[9];                 // 0 - Instrução de Load (Read)          1 - Instrução de Store (Write)
+  assign EsseProc = (instruction[8:7] == NAME);       // 0 - A origem é o outro processador    1 - A origem é o processador atual
   assign Tag_instruc = instruction[6:4];              // TAG da instrucao
   assign Valor_instruc = instruction[3:0];            // Valor a ser escrito
 
@@ -57,8 +57,8 @@ module cache #(
             // Para estado Modified 
             if(Estado_cache == Modified) begin
               OutBus = {WriteBack, Tag_cache, Valor_cache};
-				  
             end
+
           end
         end
 
@@ -74,6 +74,7 @@ module cache #(
             // MISS
             if(Tag_cache != Tag_instruc || Estado_cache == Invalid)
               OutBus = {ReadMiss, Tag_instruc, 4'b0};
+				// HIT
             else
               OutBus = {ReadHit, Tag_instruc, 4'b0};
 				  
@@ -102,6 +103,7 @@ module cache #(
                 OutBus = {WriteBack, Tag_cache, Valor_cache};
                 memory[Bloco][8:7] = Shared;
               end
+				  
           end
         end
 
@@ -114,6 +116,7 @@ module cache #(
             if(Tag_cache != Tag_instruc || Estado_cache == Invalid) begin
               memory[Bloco] = {Shared, Tag_Bus, Valor_Bus};
             end
+				
             q = memory[Bloco];
           end
         end 

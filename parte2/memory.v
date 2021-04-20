@@ -11,17 +11,19 @@ module memory #(parameter FILE, parameter [1:0] ReadMiss, WriteBack) (bus, q);
   assign tag = bus[6:4];
   assign valor = bus[3:0];
 
-  // 7 x 7
-  reg [6:0] memory [0:6]; 
+  // 7 x TTTDDDD 
+  // T- Tag    D- Dado a ser escrito
+  reg [6:0] memory [0:6];
+
 
   initial
     $readmemb(FILE, memory);
 
   always @(bus)
     if(estado == WriteBack)
-      memory[tag] <= valor;
+      memory[tag][3:0] <= valor;
 		
     else if(estado == ReadMiss)
-      q <= memory[tag];
+      q <= memory[tag][3:0];
 
 endmodule

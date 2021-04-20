@@ -1,15 +1,19 @@
-module bus#(parameter ReadHit)(PC0, PC1, Memory, q);
+module bus#(parameter ReadHit)(proc1, proc2, Memory, q);
   
-  input [7:0] PC0, PC1, Memory,
-  output reg [7:0] q;
-
-  wire [7:0] defaults = {ReadHit, 2'b0, 4'b0};
+  input [8:0] proc1, proc2, Memory;
+  output reg [8:0] q;
+  
+  
+  
+  wire [8:0] Default = {ReadHit, 3'b0, 4'b0};
 
   always@(*)
-    if(PC0 != defaults)
-      q <= PC0;
-    else if(PC1 != defaults)
-      q <= PC1;
+    if(proc1 != Default)
+      q <= proc1;
+		
+    else if(proc2 != Default)
+      q <= proc2;
+		
     else
       q <= Memory;
 

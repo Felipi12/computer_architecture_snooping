@@ -1,4 +1,4 @@
-module counter ( clock, q);
+module counter (clock, q);
   input clock;
   output reg [1:0] q;
 

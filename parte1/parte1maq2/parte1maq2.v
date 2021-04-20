@@ -16,7 +16,7 @@ module parte1maq2 ( clock, SW );
   reg action;
 
   initial
-    estado <= 2s;
+    estado <= 2;
 
   always @(posedge clock)
     case(estado)

@@ -7,10 +7,10 @@ module parte2(clock, Instruc);
   // Op    1 bit    X---------
   // proc  2 bits   -XX-------
   // tag   3 bits   ---XXX----
-  // value 4 bits   ------XXXX
+  // valor 4 bits   ------XXXX
   // TOTAL 10 bits
 
-  localparam [1:0] proc1 = 0, proc2 = 1;
+  localparam [1:0] proc1 = 2'b00, proc2 = 2'b01;
   localparam [1:0] ReadMiss = 2'b01, ReadHit = 2'b10, WriteBack = 2'b11;
 
   wire [1:0] step;
@@ -24,7 +24,7 @@ module parte2(clock, Instruc);
 
   cache #(
     // COMPLETAR AQUI
-    .NAME(proc1), .FILE("C:/Users/felip/Desktop/CEFET/Materias/AOC2/LAOC2/pratica4/computer_architecture_snooping/parte2/cache1.mem"),
+    .NAME(proc1), .FILE("C:/Users/mariz/Desktop/LAOC II/pratica4/parte2/cache1.mem"),
     .ReadMiss(ReadMiss), .ReadHit(ReadHit), .WriteBack(WriteBack)
     ) cache1 (
     .step(step),
@@ -36,7 +36,7 @@ module parte2(clock, Instruc);
 
   cache #(
     // COMPLETAR AQUI
-    .NAME(proc2), .FILE("C:/Users/felip/Desktop/CEFET/Materias/AOC2/LAOC2/pratica4/computer_architecture_snooping/parte2/cache2.mem"),
+    .NAME(proc2), .FILE("C:/Users/mariz/Desktop/LAOC II/pratica4/parte2/cache2.mem"),
     .ReadMiss(ReadMiss), .ReadHit(ReadHit), .WriteBack(WriteBack)
     ) cache2 (
     .step(step),
@@ -49,7 +49,7 @@ module parte2(clock, Instruc);
 
   memory #(
     // COMPLETAR AQUI
-    .FILE("C:/Users/felip/Desktop/CEFET/Materias/AOC2/LAOC2/pratica4/computer_architecture_snooping/parte2/memo.mem"),
+    .FILE("C:/Users/mariz/Desktop/LAOC II/pratica4/parte2/memo.mem"),
     .ReadMiss(ReadMiss),
     .WriteBack(WriteBack)
   ) Memo (
